@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Sesión 01: Iniciando en el ecosistema LaTeX</title>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/dracula.min.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai.min.css">
+        <style>
+            .container { display: flex; align-items: center; justify-content: space-between; }
+            .col { flex: 1; padding: 10px; }
+            .highlight-box { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; border-left: 5px solid #bd93f9; }
+            code { font-family: 'Fira Code', monospace !important; }
+            .reveal pre code { max-height: 500px; }
+            .tagline { color: #6272a4; font-size: 0.8em; margin-top: 20px; }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                
+                <!-- Portada -->
+				<section data-background-gradient="linear-gradient(to bottom, #282a36, #44475a)">
+					<h2 style="color: #50fa7b;">Taller: LaTeX Hands-on</h2>
+                    <h3 style="color: #f8f8f2;">Sesión 01: Iniciando en el ecosistema LaTeX</h3>
+                    <hr>
+                    <p>Bloque 1: Introducción y Filosofía</p>
+                    <div class="tagline">Tecnologico de Monterrey - Axioma | 2026</div>
+				</section>
+
+				<!-- Bloque 1: Introducción -->
+				<section>
+                    <section>
+                        <h2>¿Qué es LaTeX?</h2>
+                        <div class="highlight-box">
+                            <p>Sistema de preparación de documentos de alta calidad.</p>
+                        </div>
+                        <ul style="margin-top: 30px;">
+                            <li class="fragment"><strong>No</strong> es un procesador de texto (como Word).</li>
+                            <li class="fragment">Enfoque <strong>WYSIWYM</strong>: <em>What You See Is What You Mean</em>.</li>
+                            <li class="fragment">Tú escribes contenido; LaTeX se encarga del diseño visual.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Ventajas para Ingeniería</h3>
+                        <div class="container">
+                            <div class="col">
+                                <ul>
+                                    <li>Fórmulas matemáticas complejas.</li>
+                                    <li>Gestión bibliográfica (BibTeX).</li>
+                                    <li>Documentos largos (Tesis, Informes).</li>
+                                    <li>Consistencia tipográfica absoluta.</li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <p style="font-size: 3em;">$$\int_{a}^{b} f(x)dx$$</p>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+
+                <!-- Bloque 2: Herramientas -->
+                <section>
+                    <section>
+                        <h2>Herramientas Online</h2>
+                        <p>Acceso inmediato sin instalaciones.</p>
+                        <div class="container">
+                            <div class="col fragment">
+                                <h4 style="color: #ff79c6;">Overleaf</h4>
+                                <small>El estándar colaborativo en la nube.</small>
+                            </div>
+                            <div class="col fragment">
+                                <h4 style="color: #50fa7b;">OpenAI Prism</h4>
+                                <small>Lanzado en 2026. Workspace AI-nativo (GPT-5.2) para corrección automática y OCR de pizarras.</small>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Instalación Local</h2>
+                        <table style="font-size: 0.7em;">
+                            <thead>
+                                <tr>
+                                    <th>OS</th>
+                                    <th>Distribución</th>
+                                    <th>Editores Sugeridos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Windows</td>
+                                    <td>MiKTeX / TeX Live</td>
+                                    <td>TeXStudio, TeXmaker</td>
+                                </tr>
+                                <tr>
+                                    <td>MacOS</td>
+                                    <td>MacTeX</td>
+                                    <td>TeXStudio, TeXmaker</td>
+                                </tr>
+                                <tr>
+                                    <td>Linux</td>
+                                    <td>TeX Live</td>
+                                    <td>Kile, TeXStudio, LyX</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </section>
+
+                <!-- Bloque 3: Anatomía -->
+                <section>
+                    <section>
+                        <h2>Anatomía de un archivo .tex</h2>
+                        <pre><code class="language-latex" data-trim data-noescape>
+% --- PREÁMBULO ---
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+% --- CUERPO ---
+\begin{document}
+    ¡Hola Mundo de Ingeniería!
+\end{document}
+                        </code></pre>
+                        <p class="fragment" style="font-size: 0.8em; color: #f1fa8c;">Todo lo que va antes del "begin" define el comportamiento del documento.</p>
+                    </section>
+                    <section>
+                        <h3>Taller: Mi Primer Documento</h3>
+                        <p>Copia, pega y compila este código:</p>
+                        <pre><code class="language-latex" data-trim data-noescape>
+\documentclass[12pt]{article}
+\usepackage[spanish]{babel}
+
+\begin{document}
+    Este es mi primer documento en LaTeX. 
+    Usamos "article" para documentos cortos.
+\end{document}
+                        </code></pre>
+                        <p><small>Tip: Usa <strong>report</strong> si estás escribiendo una tesis (permite capítulos).</small></p>
+                    </section>
+                </section>
+
+                <!-- Bloque 4: Metadatos -->
+                <section>
+                    <h2>Portada Automática</h2>
+                    <p>En el preámbulo:</p>
+                    <pre><code class="language-latex" data-trim>
+\title{Reporte de Laboratorio 01}
+\author{Juan Pérez}
+\date{\today}
+                    </code></pre>
+                    <p>En el cuerpo:</p>
+                    <pre><code class="language-latex" data-trim>
+\begin{document}
+    \maketitle
+    ...
+\end{document}
+                    </code></pre>
+                </section>
+
+                <!-- Bloque 5: Estructura -->
+                <section>
+                    <section>
+                        <h2>Jerarquía de Contenidos</h2>
+                        <ul style="list-style: none;">
+                            <li style="color: #ff79c6;"><code>\section{Introducción}</code></li>
+                            <li style="color: #bd93f9; padding-left: 20px;"><code>\subsection{Marco Teórico}</code></li>
+                            <li style="color: #50fa7b; padding-left: 40px;"><code>\subsubsection{Análisis Químico}</code></li>
+                        </ul>
+                        <div class="highlight-box fragment" style="margin-top: 20px;">
+                            <p>Para generar el índice automáticamente:</p>
+                            <code>\tableofcontents</code>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Comentarios y Espacios</h2>
+                        <ul>
+                            <li>El símbolo <code>%</code> sirve para notas internas.</li>
+                            <li>LaTeX ignora espacios múltiples.</li>
+                            <li>Una línea vacía = <strong>Nuevo párrafo</strong>.</li>
+                        </ul>
+                        <pre><code class="language-latex" data-trim>
+% Este texto no aparecerá en el PDF
+Esto es un párrafo.
+
+Esto es otro párrafo nuevo.
+                        </code></pre>
+                    </section>
+                </section>
+
+                <!-- Cierre -->
+                <section data-background="#50fa7b" style="color: #282a36;">
+                    <h2>¡Manos a la obra!</h2>
+                    <p>Abre tu editor y crea tu primer reporte estructurado.</p>
+                </section>
+
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/notes/notes.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/markdown/markdown.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/highlight/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/math/math.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+                center: true,
+                slideNumber: 'c/t',
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+		</script>
+	</body>
+</html>
