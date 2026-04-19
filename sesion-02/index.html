@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Sesión 02: Matemáticas Avanzadas y Organización</title>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/dracula.min.css">
+
+		<!-- Theme para resaltado de sintaxis -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai.min.css">
+        
+        <style>
+            .container { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+            .col { flex: 1; }
+            .math-demo { background: rgba(80, 250, 123, 0.1); padding: 15px; border-radius: 8px; border: 1px solid #50fa7b; color: #50fa7b; font-size: 1.2em; margin: 10px 0; }
+            .code-box { border-left: 4px solid #bd93f9 !important; }
+            .label-step { background: #ff79c6; color: white; padding: 2px 10px; border-radius: 4px; font-size: 0.6em; vertical-align: middle; text-transform: uppercase; }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- Portada Sesión 02 -->
+				<section data-background-gradient="linear-gradient(to bottom, #282a36, #6272a4)">
+					<h2 style="color: #bd93f9;">Sesión 02</h2>
+                    <h3 style="color: #f8f8f2;">Matemáticas Avanzadas y Organización</h3>
+                    <p style="font-size: 0.8em; opacity: 0.8;">Taller: LaTeX Hands-on</p>
+                    <div style="margin-top: 50px;">
+                        <span class="label-step">Objetivo</span>
+                        <p style="font-size: 0.7em;">Dominar entornos matemáticos y estructuras de listas profesionales.</p>
+                    </div>
+				</section>
+
+				<!-- Diapositiva 1: El Poder de las Matemáticas -->
+				<section>
+                    <h2>El Poder de las Matemáticas</h2>
+                    <p>LaTeX es el estándar en ciencia e ingeniería por su calidad tipográfica.</p>
+                    <div class="highlight-box" style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #ffb86c;">Paquete Esencial</h4>
+                        <pre><code class="language-latex" data-trim>
+                            \usepackage{amsmath} % En el preámbulo
+                        </code></pre>
+                    </div>
+                    <p class="fragment" style="color: #50fa7b; font-weight: bold;">¡Recuerda: Si lo ves en pantalla, replícalo en Overleaf!</p>
+				</section>
+
+				<!-- Diapositiva 2: Modos Matemáticos -->
+				<section>
+                    <section>
+                        <h2>Modos Matemáticos</h2>
+                        <div class="container">
+                            <div class="col">
+                                <h4 style="color: #ff79c6;">Inline (En línea)</h4>
+                                <p style="font-size: 0.8em;">Dentro de un párrafo: <code>$ formula $</code></p>
+                                <div class="math-demo">$ e = mc^2 $</div>
+                            </div>
+                            <div class="col">
+                                <h4 style="color: #50fa7b;">Displayed (Céntricas)</h4>
+                                <p style="font-size: 0.8em;">Bloque independiente: <code>$$ formula $$</code></p>
+                                <div class="math-demo">$$ \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$</div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Símbolos Comunes</h3>
+                        <table style="font-size: 0.8em;">
+                            <thead>
+                                <tr><th>Comando</th><th>Resultado</th><th>Tipo</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><code>\frac{a}{b}</code></td><td>$\frac{a}{b}$</td><td>Fracción</td></tr>
+                                <tr><td><code>\sqrt[n]{x}</code></td><td>$\sqrt[n]{x}$</td><td>Raíz</td></tr>
+                                <tr><td><code>\alpha, \beta, \pi</code></td><td>$\alpha, \beta, \pi$</td><td>Griegas</td></tr>
+                                <tr><td><code>x^{2}, y_{i}</code></td><td>$x^2, y_i$</td><td>Super/Sub</td></tr>
+                            </tbody>
+                        </table>
+                    </section>
+				</section>
+
+				<!-- Diapositiva 3: Entornos Equation y Eqnarray -->
+				<section>
+                    <section>
+                        <h2>Entornos Avanzados</h2>
+                        <p style="font-size: 0.8em;">Usa <code>\begin{equation}</code> para fórmulas numeradas.</p>
+                        <pre><code class="language-latex" data-trim>
+                            \begin{equation}
+                                I = V / R
+                            \end{equation}
+                        </code></pre>
+                        <p style="font-size: 0.7em; color: #6272a4;">Tip: Añade un asterisco <code>equation*</code> para no numerar.</p>
+                    </section>
+                    <section>
+                        <h3>Alineación con eqnarray</h3>
+                        <p style="font-size: 0.8em;">Usa <code>&</code> para alinear los signos <code>=</code></p>
+                        <pre><code class="language-latex" data-trim>
+                            \begin{eqnarray*}
+                                2x + 3y &=& 10 \\
+                                x - y   &=& 2
+                            \end{eqnarray*}
+                        </code></pre>
+                        <div class="math-demo" style="font-size: 0.8em;">
+                            $\begin{aligned} 2x + 3y &= 10 \\ x - y &= 2 \end{aligned}$
+                        </div>
+                    </section>
+				</section>
+
+				<!-- Diapositiva 4: Matrices -->
+				<section>
+                    <h2>Matrices y Vectores</h2>
+                    <div class="container">
+                        <div class="col">
+                            <pre><code class="language-latex" data-trim class="code-box">
+                                \begin{bmatrix}
+                                    a & b \\
+                                    c & d
+                                \end{bmatrix}
+                            </code></pre>
+                        </div>
+                        <div class="col">
+                            <ul style="font-size: 0.7em;">
+                                <li><code>matrix</code>: Sin bordes</li>
+                                <li><code>pmatrix</code>: Paréntesis $(\,)$</li>
+                                <li><code>bmatrix</code>: Corchetes $[\,]$</li>
+                                <li><code>&</code> separa columnas</li>
+                                <li><code>\\</code> salta fila</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="math-demo">
+                        $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$
+                    </div>
+				</section>
+
+				<!-- Diapositiva 5: Listas -->
+				<section>
+                    <h2>Organización: Listas</h2>
+                    <div class="container">
+                        <div class="col" style="font-size: 0.7em;">
+                            <h4 style="color: #bd93f9;">itemize</h4>
+                            <pre><code class="language-latex" data-trim>
+                                \begin{itemize}
+                                    \item Punto A
+                                    \item Punto B
+                                \end{itemize}
+                            </code></pre>
+                        </div>
+                        <div class="col" style="font-size: 0.7em;">
+                            <h4 style="color: #50fa7b;">enumerate</h4>
+                            <pre><code class="language-latex" data-trim>
+                                \begin{enumerate}
+                                    \item Primero
+                                    \item Segundo
+                                \end{enumerate}
+                            </code></pre>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.6em; margin-top: 20px;">Usa <code>description</code> para glosarios o definiciones.</p>
+				</section>
+
+				<!-- Diapositiva 6: Laboratorio -->
+				<section data-background="#44475a">
+                    <h2 style="color: #50fa7b;">Reto Práctico: Laboratorio</h2>
+                    <p style="font-size: 0.8em;">Replica la siguiente ecuación compleja:</p>
+                    <div class="math-demo" style="font-size: 1.5em; background: #282a36;">
+                        $$ \sum_{i=1}^{n} \frac{\partial \theta}{\partial x} = \int_{0}^{\infty} f(x) dx $$
+                    </div>
+                    <div class="container" style="margin-top: 30px;">
+                        <div class="col glass" style="padding: 10px; border-radius: 10px;">
+                            <i class="fas fa-magic"></i>
+                            <p style="font-size: 0.6em;">Usa <strong>Prism AI</strong>: "Whiteboard-to-LaTeX" si tienes una foto de una fórmula.</p>
+                        </div>
+                        <div class="col glass" style="padding: 10px; border-radius: 10px;">
+                            <i class="fas fa-bug"></i>
+                            <p style="font-size: 0.6em;">¿Errores? Revisa siempre que cada <code>\begin</code> tenga su <code>\end</code>.</p>
+                        </div>
+                    </div>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/notes/notes.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/markdown/markdown.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/highlight/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/math/math.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+                center: true,
+                slideNumber: 'c/t',
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+		</script>
+	</body>
+</html>
