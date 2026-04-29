@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Sesión 03: Elementos Visuales y Bibliografía Avanzada</title>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/dracula.min.css">
+
+		<!-- Theme para resaltado de sintaxis -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai.min.css">
+        
+        <style>
+            .container { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+            .col { flex: 1; text-align: left; }
+            .highlight-box { background: rgba(189, 147, 249, 0.1); padding: 15px; border-radius: 8px; border: 1px solid #bd93f9; margin: 10px 0; }
+            .label-step { background: #50fa7b; color: #282a36; padding: 2px 10px; border-radius: 4px; font-size: 0.6em; vertical-align: middle; text-transform: uppercase; font-weight: bold; }
+            .fig-placeholder { border: 2px dashed #6272a4; padding: 10px; color: #6272a4; text-align: center; border-radius: 10px; font-size: 0.5em; }
+            pre { font-size: 0.45em !important; width: 100% !important; }
+            .bib-type { color: #ff79c6; font-weight: bold; }
+            .step-title { color: #8be9fd; font-size: 0.8em !important; text-transform: uppercase; letter-spacing: 2px; }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- Portada Sesión 03 -->
+				<section data-background-gradient="linear-gradient(to bottom, #282a36, #ff79c6)">
+					<h2 style="color: #ff79c6;">Sesión 03</h2>
+                    <h3 style="color: #f8f8f2;">Elementos Visuales y Bibliografía</h3>
+                    <p style="font-size: 0.8em; opacity: 0.8;">Taller: LaTeX Hands-on</p>
+                    <div style="margin-top: 50px;">
+                        <span class="label-step">Aprendizaje Incremental</span>
+                        <p style="font-size: 0.6em; margin-top: 10px;">De lo Básico a lo Avanzado en Imágenes y Tablas</p>
+                    </div>
+				</section>
+
+				<!-- 1. GESTIÓN DE IMÁGENES -->
+				<section>
+                    <section>
+                        <p class="step-title">Paso 1.1: Imágenes Simples</p>
+                        <h2>El entorno figure</h2>
+                        <pre><code class="language-latex" data-trim>
+                            \usepackage{graphicx} % En el preámbulo
+
+                            \begin{figure}[h!]
+                                \centering
+                                \includegraphics[width=0.6\textwidth]{grafica1}
+                                \caption{Resultados del experimento}
+                                \label{fig:resultados}
+                            \end{figure}
+                        </code></pre>
+                        <div class="highlight-box" style="font-size: 0.6em;">
+                            <strong>Atributos:</strong> [h] (here), [t] (top), [b] (bottom). El símbolo "!" fuerza la posición.
+                        </div>
+                    </section>
+                    
+                    <section>
+                        <p class="step-title">Paso 1.2: Imágenes Múltiples</p>
+                        <h3>Uso de subcaption</h3>
+                        <p style="font-size: 0.6em;">Para agrupar varias imágenes bajo una sola numeración principal.</p>
+                        <pre><code class="language-latex" data-trim>
+                            \usepackage{subcaption}
+
+                            \begin{figure}[h!]
+                                \centering
+                                \begin{subfigure}[b]{0.45\textwidth}
+                                    \includegraphics[width=\textwidth]{A}
+                                    \caption{Muestra A}
+                                \end{subfigure}
+                                \hfill
+                                \begin{subfigure}[b]{0.45\textwidth}
+                                    \includegraphics[width=\textwidth]{B}
+                                    \caption{Muestra B}
+                                \end{subfigure}
+                                \caption{Comparativa de muestras}
+                            \end{figure}
+                        </code></pre>
+                    </section>
+                </section>
+
+                <!-- 2. TABLAS -->
+				<section>
+                    <section>
+                        <p class="step-title">Paso 2.1: Tablas Básicas</p>
+                        <h2>La cuadrícula tabular</h2>
+                        <div class="container">
+                            <div class="col">
+                                <pre><code class="language-latex" data-trim>
+                                    \begin{tabular}{|l|c|r|}
+                                        \hline
+                                        ID & Dato & Valor \\ \hline
+                                        01 & Temp & 25.5 \\ \hline
+                                    \end{tabular}
+                                </code></pre>
+                            </div>
+                            <div class="col">
+                                <ul style="font-size: 0.55em;">
+                                    <li><code>{ |l|c|r| }</code>: Define 3 columnas (izq, centro, der) con líneas verticales.</li>
+                                    <li><code>\hline</code>: Línea horizontal.</li>
+                                    <li><code>&</code>: Salto de columna.</li>
+                                    <li><code>\\</code>: Salto de fila.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <p class="step-title">Paso 2.2: Tablas Complejas</p>
+                        <h2>Celdas unidas (multicolumn)</h2>
+                        <p style="font-size: 0.7em;">Fusión horizontal de celdas para encabezados o notas.</p>
+                        <pre><code class="language-latex" data-trim>
+                            \begin{tabular}{|c|c|c|}
+                                \hline
+                                \multicolumn{3}{|c|}{\textbf{Resumen Mensual}} \\ \hline
+                                Enero & Febrero & Marzo \\ \hline
+                                100 & 150 & 120 \\ \hline
+                            \end{tabular}
+                        </code></pre>
+                        <div class="highlight-box" style="font-size: 0.6em;">
+                            <strong>Sintaxis:</strong> <code>\multicolumn{columnas}{alineación}{texto}</code>
+                        </div>
+                    </section>
+                </section>
+
+                <!-- 3. BIBLIOGRAFÍA -->
+                <section>
+                    <section>
+                        <h2>Tipos de Entradas BibTeX</h2>
+                        <div class="container" style="font-size: 0.45em;">
+                            <div class="col">
+                                <p><span class="bib-type">@article</span>: Revistas (Journal).</p>
+                                <p><span class="bib-type">@book</span>: Libros impresos.</p>
+                                <p><span class="bib-type">@inproceedings</span>: Congresos.</p>
+                            </div>
+                            <div class="col">
+                                <p><span class="bib-type">@techreport</span>: Manuales técnicos.</p>
+                                <p><span class="bib-type">@phdthesis</span>: Tesis.</p>
+                                <p><span class="bib-type">@misc</span>: Web / Software.</p>
+                            </div>
+                        </div>
+                        <pre><code class="language-bibtex" data-trim>
+                            @article{tesla1888,
+                                author = {Tesla, Nikola},
+                                title  = {A New System of Alternating Current Motors},
+                                journal= {AIEE},
+                                year   = {1888}
+                            }
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Estilos de Bibliografía</h3>
+                        <div class="container" style="font-size: 0.6em;">
+                            <div class="col glass" style="padding:10px;">
+                                <strong style="color:#50fa7b;">IEEEtran / plain</strong>
+                                <p>Numérico: [1], [2]</p>
+                                <p>Estándar en Ingeniería.</p>
+                            </div>
+                            <div class="col glass" style="padding:10px;">
+                                <strong style="color:#ff79c6;">apalike</strong>
+                                <p>Autor-Año: (Smith, 2024)</p>
+                                <p>Tesis de Investigación.</p>
+                            </div>
+                            <div class="col glass" style="padding:10px;">
+                                <strong style="color:#8be9fd;">alpha</strong>
+                                <p>Siglas: [Smi24]</p>
+                                <p>Informática / Matemáticas.</p>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+
+                <!-- Laboratorio -->
+                <section data-background="#282a36">
+                    <h2 style="color: #50fa7b;">Laboratorio Final</h2>
+                    <div style="text-align: left; font-size: 0.8em;">
+                        <p><strong>El Reto:</strong></p>
+                        <ol>
+                            <li>Inserta una imagen simple.</li>
+                            <li>Crea una figura con 2 sub-gráficas.</li>
+                            <li>Diseña una tabla con un título superior usando <code>\multicolumn</code>.</li>
+                            <li>Cita un libro y una página web.</li>
+                        </ol>
+                    </div>
+                </section>
+
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/notes/notes.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/markdown/markdown.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/highlight/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/math/math.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+                center: true,
+                slideNumber: 'c/t',
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+		</script>
+	</body>
+</html>
