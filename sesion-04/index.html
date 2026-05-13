@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Sesión 04: Algoritmos y Diagramas con TikZ</title>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/dracula.min.css">
+
+		<!-- Theme para resaltado de sintaxis -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai.min.css">
+        
+        <style>
+            .container { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+            .col { flex: 1; text-align: left; }
+            .highlight-box { background: rgba(80, 250, 123, 0.1); padding: 15px; border-radius: 8px; border: 1px solid #50fa7b; margin: 10px 0; }
+            .label-step { background: #ffb86c; color: #282a36; padding: 2px 10px; border-radius: 4px; font-size: 0.6em; vertical-align: middle; text-transform: uppercase; font-weight: bold; }
+            pre { font-size: 0.45em !important; width: 100% !important; }
+            .tikz-demo { background: white; padding: 10px; border-radius: 8px; display: flex; justify-content: center; }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- Portada Sesión 04 -->
+				<section data-background-gradient="linear-gradient(to bottom, #282a36, #50fa7b)">
+					<h2 style="color: #50fa7b;">Sesión 04</h2>
+                    <h3 style="color: #f8f8f2;">Algoritmos y Diagramas Vectoriales</h3>
+                    <p style="font-size: 0.8em; opacity: 0.8;">Taller: LaTeX Hands-on</p>
+                    <div style="margin-top: 50px;">
+                        <span class="label-step">Nivel Avanzado</span>
+                        <p style="font-size: 0.6em; margin-top: 10px;">Pseudocódigo Profesional • Gráficos con TikZ</p>
+                    </div>
+				</section>
+
+				<!-- 1. ALGORITMOS -->
+				<section>
+                    <section>
+                        <h2>Pseudocódigo Profesional</h2>
+                        <p style="font-size: 0.7em;">En ingeniería, el código debe ser legible y estructurado. Usamos <code>algorithm2e</code>.</p>
+                        <pre><code class="language-latex" data-trim>
+                            \usepackage[ruled,vlined]{algorithm2e} % Preámbulo
+
+                            \begin{algorithm}[H]
+                                \SetAlgoLined
+                                \KwData{Entrada $x$}
+                                \KwResult{Salida $y = x^2$}
+                                \If{$x > 0$}{
+                                    $y \leftarrow x \times x$\;
+                                }
+                                \caption{Algoritmo de Potencia Simple}
+                            \end{algorithm}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Componentes de algorithm2e</h3>
+                        <ul style="font-size: 0.7em;">
+                            <li><code>\KwData</code> / <code>\KwResult</code>: Entradas y Salidas.</li>
+                            <li><code>\;</code>: Obligatorio para terminar cada línea.</li>
+                            <li><code>\If{cond}{bloque}</code>: Estructuras de control.</li>
+                            <li>Opciones: <code>ruled</code> (líneas estéticas), <code>vlined</code> (guías verticales).</li>
+                        </ul>
+                    </section>
+                </section>
+
+				<!-- 2. TIKZ - INTRODUCCIÓN -->
+				<section>
+                    <section>
+                        <h2>Introducción a TikZ</h2>
+                        <p style="font-size: 0.8em;">"TikZ ist kein Zeichenprogramm" (TikZ no es un programa de dibujo). Es código que genera gráficos.</p>
+                        <div class="highlight-box">
+                            <pre><code class="language-latex" data-trim>
+                                \usepackage{tikz}
+                                \begin{tikzpicture}
+                                    \draw[red, thick] (0,0) -- (2,2);
+                                    \draw[blue] (1,1) circle (0.5cm);
+                                \end{tikzpicture}
+                            </code></pre>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Nodos y Coordenadas</h3>
+                        <p style="font-size: 0.7em;">TikZ funciona uniendo "nodos" (bloques de texto) con flechas.</p>
+                        <pre><code class="language-latex" data-trim>
+                            \begin{tikzpicture}
+                                \node[draw, rectangle] (A) at (0,0) {Entrada};
+                                \node[draw, circle] (B) at (3,0) {Proceso};
+                                \draw[->] (A) -- (B);
+                            \end{tikzpicture}
+                        </code></pre>
+                        <div class="tikz-demo">
+                            <svg width="200" height="60">
+                                <rect x="10" y="15" width="60" height="30" fill="none" stroke="black" />
+                                <text x="15" y="35" font-size="10" fill="black">Entrada</text>
+                                <line x1="70" y1="30" x2="120" y2="30" stroke="black" marker-end="url(#arrow)" />
+                                <circle cx="150" cy="30" r="20" fill="none" stroke="black" />
+                                <text x="135" y="35" font-size="10" fill="black">Proceso</text>
+                                <defs>
+                                    <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto">
+                                        <path d="M0,0 L0,6 L9,3 z" fill="black" />
+                                    </marker>
+                                </defs>
+                            </svg>
+                        </div>
+                    </section>
+                </section>
+
+				<!-- 3. TIKZ - DIAGRAMAS DE BLOQUES -->
+				<section>
+                    <h2>Diagramas de Bloques</h2>
+                    <p style="font-size: 0.6em;">Estilo profesional para sistemas de control e ingeniería.</p>
+                    <pre><code class="language-latex" data-trim>
+                        \tikzstyle{block} = [draw, fill=blue!20, rectangle, minimum height=3em, minimum width=6em]
+                        \tikzstyle{input} = [coordinate]
+                        
+                        \begin{tikzpicture}[auto, node distance=2cm]
+                            \node [input] (in) {};
+                            \node [block, right of=in] (system) {Planta $G(s)$};
+                            \draw [->] (in) -- node {u(t)} (system);
+                        \end{tikzpicture}
+                    </pre></code>
+                    <div class="highlight-box" style="font-size: 0.6em;">
+                        <strong>Tip:</strong> Define estilos (<code>\tikzstyle</code>) al inicio para mantener la consistencia en todo el diagrama.
+                    </div>
+                </section>
+
+                <!-- 4. LIBRERÍAS ESPECIALIZADAS -->
+                <section>
+                    <h2>Librerías Especializadas</h2>
+                    <div class="container">
+                        <div class="col glass" style="padding:10px;">
+                            <strong style="color:#ff79c6;">CircuiTikZ</strong>
+                            <p style="font-size: 0.6em;">Para diagramas eléctricos (resistencias, diodos, fuentes).</p>
+                        </div>
+                        <div class="col glass" style="padding:10px;">
+                            <strong style="color:#50fa7b;">PGFPlots</strong>
+                            <p style="font-size: 0.6em;">Para gráficas de funciones y datos experimentales desde archivos .csv.</p>
+                        </div>
+                    </div>
+                    <pre><code class="language-latex" data-trim>
+                        \usepackage[american]{circuitikz}
+                        \begin{circuitikz}
+                            \draw (0,0) to[R=$R_1$] (2,0);
+                        \end{circuitikz}
+                    </code></pre>
+                </section>
+
+                <!-- Laboratorio -->
+                <section data-background="#282a36">
+                    <h2 style="color: #50fa7b;">Laboratorio Final</h2>
+                    <div style="text-align: left; font-size: 0.8em;">
+                        <p><strong>Reto Técnico:</strong></p>
+                        <ol>
+                            <li>Escribe un algoritmo de ordenamiento simple usando <code>algorithm2e</code>.</li>
+                            <li>Dibuja un diagrama de flujo de 3 pasos (Inicio -> Proceso -> Fin) usando TikZ.</li>
+                            <li><strong>Extra:</strong> Intenta cambiar los colores de relleno (fill) de los nodos.</li>
+                        </ol>
+                    </div>
+                    <p style="font-size: 0.5em; margin-top: 20px; color: #6272a4;">Herramienta recomendada: TikZit o Mathcha.io para exportar código TikZ visualmente.</p>
+                </section>
+
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/notes/notes.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/markdown/markdown.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/highlight/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/math/math.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+                center: true,
+                slideNumber: 'c/t',
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+		</script>
+	</body>
+</html>
